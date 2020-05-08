@@ -1,23 +1,34 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+
     <q-header
       elevated
-      class="bg-orange"
+      reveal
     >
-      <q-toolbar>
-        <q-toolbar-title>Money Tracker</q-toolbar-title>
-        <q-btn
-          flat
-          @click="drawerRight = !drawerRight"
-          round
-          dense
-          icon="menu"
-        />
+      <q-toolbar class="row">
+        <div class="col-1">
+          <q-avatar size="26px ">
+          </q-avatar>
+        </div>
+        <q-toolbar-title class="col">
+          <div class="absolute-center">
+            {{toolbarHeader}}
+          </div>
+        </q-toolbar-title>
+        <div class="col-1">
+          <q-btn
+            class="self-right"
+            dense
+            flat
+            round
+            icon="menu"
+            @click="right = !right"
+          />
+        </div>
       </q-toolbar>
     </q-header>
-
     <q-drawer
-      v-model="drawerRight"
+      v-model="right"
       show-if-above
       side="right"
       :width="200"
@@ -36,9 +47,6 @@
           clickable
           v-ripple
         >
-          <q-item-section>
-            dashboard
-          </q-item-section>
         </q-item>
         <q-item
           to="/"
@@ -65,9 +73,25 @@ export default {
 
   data () {
     return {
-      drawerRight: false,
-      drawerLeft: true
+      right: true,
+      toolbarHeader: null
+    }
+  },
+  methods: {
+    getToolbarHeader () {
+      if (this.$router.currentRoute.meta.toolbarHeader) {
+        this.toolbarHeader = this.$router.currentRoute.meta.toolbarHeader
+      }
+    }
+  },
+  created () {
+    this.getToolbarHeader()
+  },
+  watch: {
+    $route (to, from) {
+      this.getToolbarHeader()
     }
   }
+
 }
 </script>
