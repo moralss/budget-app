@@ -1,0 +1,24 @@
+buget-app-411e3
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBwg6kDOZ-oVOywzR53mBzGEsI_cXf1TQY",
+    authDomain: "buget-app-411e3.firebaseapp.com",
+    databaseURL: "https://buget-app-411e3.firebaseio.com",
+    projectId: "buget-app-411e3",
+    storageBucket: "buget-app-411e3.appspot.com",
+    messagingSenderId: "1005352395615",
+    appId: "1:1005352395615:web:965d759cf2620c9a820cea",
+    measurementId: "G-GFDYYBRT16"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
