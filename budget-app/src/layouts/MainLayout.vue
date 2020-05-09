@@ -36,29 +36,49 @@
       elevated
       content-class=""
     >
-      <q-list
-        bordered
-        padding
-        class="rounded-borders"
-        style="max-width: 500px"
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; color:black; border-right: 1px solid #ddd;">
+
+        <q-list
+          bordered
+          padding
+          class="rounded-borders"
+          style="max-width: 500px"
+        >
+          <q-item
+            to="/"
+            clickable
+            v-ripple
+          >
+            <q-item-section>
+              Home
+            </q-item-section>
+          </q-item>
+          <q-separator spaced />
+          <q-item
+            to="/"
+            clickable
+            v-ripple
+          >
+            <q-item-section>Log Out</q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
       >
-        <q-item
-          to="/dashboard"
-          clickable
-          v-ripple
-        >
-        </q-item>
-        <q-item
-          to="/"
-          clickable
-          v-ripple
-        >
-          <q-item-section>
-            main page
-          </q-item-section>
-        </q-item>
-        <q-separator spaced />
-      </q-list>
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar
+            size="56px"
+            class="q-mb-sm"
+          >
+            <img :src="user.photoURL" />
+          </q-avatar>
+          <div class="text-weight-bold">{{user.displayName}}</div>
+          <div>{{user.email}}</div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
@@ -70,7 +90,6 @@
 <script>
 export default {
   name: 'MyLayout',
-
   data () {
     return {
       right: true,
@@ -86,6 +105,11 @@ export default {
   },
   created () {
     this.getToolbarHeader()
+  },
+  computed: {
+    user () {
+      return JSON.parse(JSON.stringify(this.$store.getters.user))
+    }
   },
   watch: {
     $route (to, from) {

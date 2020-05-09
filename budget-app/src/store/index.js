@@ -21,6 +21,9 @@ export default new Vuex.Store({
     isAuthenticated (state) {
       return state.user != null
     },
+    user (state) {
+      return state.user
+    },
     userToken (state) {
       return state.token
     },
