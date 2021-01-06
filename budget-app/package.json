@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.6.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axois": "0.0.1-security",
     "firebase": "^7.14.2",
     "quasar": "^1.9.15",
